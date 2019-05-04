@@ -1,6 +1,9 @@
 import request from './../../ Utils/request'
-import { isEmptyString } from './../../ Utils/_function'
 
+
+const isEmpty = (str) => {
+    return (!str || 0 === str.length);
+}
 export const product = {
     state: {
         products: [],
@@ -16,7 +19,7 @@ export const product = {
     },
     effects: (dispatch) => ({
         async SearchProduct(keyword) {
-            const search = isEmptyString(keyword) ? '' : `&filter=like(name,*${keyword}*)`
+            const search = isEmpty(keyword) ? '' : `&filter=like(name,*${keyword}*)`
             const include = '&include=main_image'
             const resp = await request.get(`/products?page[offset]=0&page[limit]=10${include}${search}`)
             const products = resp.data.data.map(item => { 

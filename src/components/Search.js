@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleChange } from '../ Utils/_function';
 import { 
     Box, 
     FormField, 
@@ -14,6 +13,10 @@ class Search extends Component {
     render() {
         const { keyword } = this.props.product
         const { setValue , SearchProduct } = this.props.productAction
+        const handleChange = (e, setValue) => {
+            const { name ,value } = e.target
+            setValue(value, name)
+        }
 
         return (
             <Box direction="column" basis="medium" pad="small">
