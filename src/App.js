@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Grommet, Box , TextInput, FormField, Button } from 'grommet'
+import AppBar from './components/AppBar'
+import ProductList from './components/ProductList'
+import Search from './components/Search'
 import './App.css';
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  render() {
+    return (
+      <Grommet plain full>
+        <Box direction="column" fill>
+          <AppBar />
+          <Box direction="row" pad="medium" fill>
+            <Box width='medium'>
+              <Search />
+            </Box>
+            <Box flex>
+              <ProductList />
+            </Box>
+          </Box>
+        </Box>
+      </Grommet>
+    );
+  }
 }
 
 export default App;
